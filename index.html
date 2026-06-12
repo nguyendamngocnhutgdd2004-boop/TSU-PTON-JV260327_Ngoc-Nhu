@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Công Việc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hệ Thống Quản Lý Công Việc</h1>
+    <h2 id="formTitle">Thêm công việc mới</h2>
+
+    <label>Tên công việc</label>
+    <input type="text" id="taskName" placeholder="Nhập tên công việc">
+    <span id="errName"></span>
+
+    <label>Người thực hiện</label>
+    <input type="text" id="taskAssignee" placeholder="Người thực hiện">
+    <span id="errAssignee"></span>
+
+    <label>Deadline</label>
+    <input type="date" id="taskDeadline">
+    <span id="errDeadline"></span>
+    <br><br>
+    <label>Trạng thái</label>
+    <select id="taskStatus">
+        <option value="Chờ làm">Chờ làm</option>
+        <option value="Đang làm ">Hoàn thành</option>
+        <option value="Hoàn thành">Hoàn thành</option>
+    </select>
+    <br><br>
+    <button id="submitBtn" onclick="submitForm()">Lưu công việc</button>
+    <button onclick="resetForm()">Hủy</button>
+    <hr>
+    <input type="text" id="searchInput" placeholder="Tìm theo tên công việc hoặc Người thực hiện" oninput="renderTable()" style="width: 350px;">
+    <select id="sortSelect" onchange="renderTable">
+        <option value="Sắp xếp">Sắp xếp</option>
+        <option value="A-Z Tên">Tên A-Z</option>
+        <option value="Deadline">Deadline</option>
+        <option value="Status">Trạng thái</option>
+    </select>
+
+    <h2>Danh sách công việc</h2>
+        <table border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th> Mã công việc</th>
+                    <th>Tên công việc</th>
+                    <th>Người thực hiện</th>
+                    <th>Deadline</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+        <p id="emptyMsg" style="display: none;">Chưa có công việc nào</p>
+        <script src="script.js"></script>
+</body>
+</html>
